@@ -13,8 +13,7 @@ const NINE = 9;
 
 /*----- app's state (variables) -----*/
 
-var currentNumber;
-var previousNumber;
+var selectedNum;
 var runningTotal;
 
 /*----- cached element references -----*/
@@ -32,3 +31,23 @@ calcContainer.addEventListener("click", function(event) {
 });
 
 /*----- functions -----*/
+
+function add (selectedNum, runningTotal) {
+    runningTotal = runningTotal + selectedNum;
+    return runningTotal;
+}
+
+function subtract (selectedNum, runningTotal) {
+    runningTotal = runningTotal - selectedNum;
+    return runningTotal;
+}
+
+function divide () {
+    runningTotal = runningTotal / selectedNum;
+    return runningTotal;
+}
+
+function multiply () {
+    runningTotal = runningTotal * selectedNum;
+    return runningTotal;
+}
