@@ -1,0 +1,120 @@
+/* 6x4 grid */
+
+body {
+    margin: auto;
+    font-family: 'Lato', sans-serif;
+    font-size: 15pt;
+}
+
+main {
+    text-align: center;
+    width: 350px;
+    margin: 20px auto;
+    background-color: lightgrey;
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 0px;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-areas: "total total total total"
+                         "AC pos-neg backarrow divide"
+                         "seven eight nine multi"
+                         "four five six subtr"
+                         "one two three added"
+                         "zeroo zeroo deci equal";
+}
+
+.operators {
+    background-color: orange;
+    color: white;
+}
+
+div {
+    padding: 20px;
+    border: 1px solid darkgrey;
+    cursor: pointer;
+}
+
+div:hover {
+    border-color: white;
+}
+
+#total {
+    background-color: darkgrey;
+    text-align: right;
+    grid-area: total;
+}
+
+#AC {
+    grid-area: AC;
+}
+
+#pos-neg {
+    grid-area: pos-neg;
+}
+
+#backarrow {
+    grid-area: backarrow;
+}
+
+#divide {
+    grid-area: divide;
+}
+
+#seven {
+    grid-area: seven;
+}
+
+#eight {
+    grid-area: eight;
+}
+
+#nine {
+    grid-area: nine;
+}
+
+#multiply {
+    grid-area: multi;
+}
+
+#four {
+    grid-area: four;
+}
+
+#five {
+    grid-area: five;
+}
+
+#six {
+    grid-area: six;
+}
+
+#subtract {
+    grid-area: subtr;
+}
+
+#one {
+    grid-area: one;
+}
+
+#two {
+    grid-area: two;
+}
+
+#three {
+    grid-area: three;
+}
+
+#add {
+    grid-area: added;
+}
+
+#zero {
+    grid-area: zeroo;
+}
+
+#decimal {
+    grid-area: deci;
+}
+
+#equal {
+    grid-area: equal;
+}
