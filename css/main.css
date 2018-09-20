@@ -6,13 +6,20 @@ body {
     font-size: 15pt;
 }
 
+p {
+    margin-top: 26px;
+    padding-right: 20px;
+    font-size: 30pt;
+    color: white;
+}
+
 main {
     text-align: center;
     width: 350px;
     margin: 20px auto;
     background-color: lightgrey;
     display: grid;
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 0px;
+    grid-template-rows: 90px 75px 75px 75px 75px 75px 0px;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-areas: "total total total total"
                          "AC pos-neg backarrow divide"
@@ -25,6 +32,7 @@ main {
 .operators {
     background-color: orange;
     color: white;
+    font-size: 20pt;
 }
 
 div {
