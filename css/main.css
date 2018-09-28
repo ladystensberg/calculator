@@ -13,6 +13,11 @@ p {
     color: white;
 }
 
+h1 {
+    color: white;
+    margin-right: 20px;
+}
+
 main {
     text-align: center;
     width: 350px;
@@ -51,15 +56,15 @@ div:hover {
     grid-area: total;
 }
 
-#AC {
+#ac {
     grid-area: AC;
 }
 
-#pos-neg {
+#set-sign {
     grid-area: pos-neg;
 }
 
-#backarrow {
+#back-arrow {
     grid-area: backarrow;
 }
 
