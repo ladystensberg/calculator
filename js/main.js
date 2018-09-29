@@ -18,7 +18,6 @@ const SUBTRACT = "-";
 /*----- app's state (variables) -----*/
 
 var runningTotal;
-var finalTotal;
 var numbersToCalculate;
 var currentNumberSelection;
 
@@ -86,15 +85,40 @@ calculatorBody.addEventListener("click", function(event) {
             setNumberToCalcAndOperand(SUBTRACT);
             currentNumberSelection = "";
             break;
+        case "set-sign":
+            addSign();
+            break;
+        case "decimal":
+            addDecimal();
+            break;
+        case "ac":
+            clearCalculator();
+            break;
+        case "back-arrow":
+            removeNumberFromView();
+            break;
+        case "equal":
+            calculate();
+            break;
     }
     displayTotal();
-})
-
-allClear.addEventListener("click", clearCalculator);
-backArrow.addEventListener("click", removeNumberFromView);
-totalButton.addEventListener("click", calculate);
+});
 
 /*----- functions -----*/
+
+function addDecimal() {
+    currentNumberSelection += ".";
+}
+
+function addSign() {
+    if (Math.sign(currentNumberSelection) === -1) {
+        currentNumberSelection = Math.abs(currentNumberSelection);
+        runningTotal = currentNumberSelection;
+    } else {
+        currentNumberSelection = -Math.abs(currentNumberSelection);
+        runningTotal = currentNumberSelection;
+    }
+}
 
 function setNumberToCalcAndOperand(OPERAND) {
     numbersToCalculate.push(currentNumberSelection);
@@ -111,8 +135,10 @@ function calculate() {
         numbersToCalculate.push(currentNumberSelection);
         runningTotal = eval(numbersToCalculate.join(""));
     } else {
-        getTotal();
+        displayTotal();
     }
+    currentNumberSelection = "";
+    numbersToCalculate = [];
 }
 
 function removeNumberFromView() {
@@ -126,12 +152,7 @@ function clearCalculator() {
     numbersToCalculate = [];
 }
 
-function getTotal() {
-    return runningTotal;
-}
-
 function displayTotal() {
-    getTotal();
     totalText.textContent = runningTotal;
 }
 
