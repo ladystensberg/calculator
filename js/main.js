@@ -10,11 +10,17 @@ const SIX = "6";
 const SEVEN = "7";
 const EIGHT = "8";
 const NINE = "9";
+const DIVIDE = "/";
+const MULTIPLY = "*";
+const ADD = "+";
+const SUBTRACT = "-";
 
 /*----- app's state (variables) -----*/
 
 var runningTotal;
+var finalTotal;
 var numbersToCalculate;
+var currentNumberSelection;
 
 /*----- cached element references -----*/
 
@@ -33,15 +39,52 @@ var calculatorBody = document.getElementsByTagName("main")[0];
 /*----- event listeners -----*/
 
 calculatorBody.addEventListener("click", function(event) {
-    console.log(event.target);
+    switch(event.target.id) {
+        case "zero":
+            currentNumberSelection += ZERO;
+            runningTotal = currentNumberSelection;
+            break;
+        case "one":
+            currentNumberSelection += ONE;
+            runningTotal = currentNumberSelection;
+    }
+    displayTotal();
 })
+
+allClear.addEventListener("click", clearCalculator);
+backArrow.addEventListener("click", removeNumberFromView);
+totalButton.addEventListener("click", calculate);
 
 /*----- functions -----*/
 
-function render() {
-    totalText.textContent = 0;
-    runningTotal = 0;
+function calculate() {
+    eval(numbersToCalculate.join(""));
+}
+
+function removeNumberFromView() {
+    currentNumberSelection = currentNumberSelection.substring(0, currentNumberSelection.length - 1);
+    runningTotal = currentNumberSelection;
+}
+
+function clearCalculator() {
+    console.log("clearing...");
+    runningTotal = "0";
+    currentNumberSelection = "0";
     numbersToCalculate = [];
+}
+
+function getTotal() {
+    return runningTotal;
+}
+
+function displayTotal() {
+    getTotal();
+    totalText.textContent = runningTotal;
+}
+
+function render() {
+    clearCalculator();
+    displayTotal();
 }
 
 render();
