@@ -41,12 +41,51 @@ var calculatorBody = document.getElementsByTagName("main")[0];
 calculatorBody.addEventListener("click", function(event) {
     switch(event.target.id) {
         case "zero":
-            currentNumberSelection += ZERO;
-            runningTotal = currentNumberSelection;
+            setCurrNumAndRunningTotal(ZERO);
             break;
         case "one":
-            currentNumberSelection += ONE;
-            runningTotal = currentNumberSelection;
+            setCurrNumAndRunningTotal(ONE);
+            break;
+        case "two":
+            setCurrNumAndRunningTotal(TWO);
+            break;
+        case "three":
+            setCurrNumAndRunningTotal(THREE);
+            break;
+        case "four":
+            setCurrNumAndRunningTotal(FOUR);
+            break;
+        case "five":
+            setCurrNumAndRunningTotal(FIVE);
+            break;
+        case "six":
+            setCurrNumAndRunningTotal(SIX);
+            break;
+        case "seven":
+            setCurrNumAndRunningTotal(SEVEN);
+            break;
+        case "eight":
+            setCurrNumAndRunningTotal(EIGHT);
+            break;
+        case "nine":
+            setCurrNumAndRunningTotal(NINE);
+            break;
+        case "divide":
+            setNumberToCalcAndOperand(DIVIDE);
+            currentNumberSelection = "";
+            break;
+        case "multiply":
+            setNumberToCalcAndOperand(MULTIPLY);
+            currentNumberSelection = "";
+            break;
+        case "add":
+            setNumberToCalcAndOperand(ADD);
+            currentNumberSelection = "";
+            break;
+        case "subtract":
+            setNumberToCalcAndOperand(SUBTRACT);
+            currentNumberSelection = "";
+            break;
     }
     displayTotal();
 })
@@ -57,8 +96,23 @@ totalButton.addEventListener("click", calculate);
 
 /*----- functions -----*/
 
+function setNumberToCalcAndOperand(OPERAND) {
+    numbersToCalculate.push(currentNumberSelection);
+    numbersToCalculate.push(OPERAND);
+}
+
+function setCurrNumAndRunningTotal(NUM) {
+    currentNumberSelection += NUM;
+    runningTotal = currentNumberSelection;
+}
+
 function calculate() {
-    eval(numbersToCalculate.join(""));
+    if (numbersToCalculate.length > 0) {
+        numbersToCalculate.push(currentNumberSelection);
+        runningTotal = eval(numbersToCalculate.join(""));
+    } else {
+        getTotal();
+    }
 }
 
 function removeNumberFromView() {
@@ -67,9 +121,8 @@ function removeNumberFromView() {
 }
 
 function clearCalculator() {
-    console.log("clearing...");
     runningTotal = "0";
-    currentNumberSelection = "0";
+    currentNumberSelection = "";
     numbersToCalculate = [];
 }
 
